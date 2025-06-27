@@ -1,0 +1,11 @@
+import java.util.*;
+import java.math.BigInteger;
+class Solution {
+    public String addStrings(String num1, String num2) {
+        BigInteger  k= new BigInteger (num1);
+        BigInteger p=  new BigInteger(num2);
+        BigInteger sum = k.add(p);
+        
+        return sum.toString();
+    }
+}
