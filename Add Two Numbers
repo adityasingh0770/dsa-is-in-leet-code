@@ -1,0 +1,62 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+import java.math.BigInteger;
+
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        class Nelo {
+            ListNode head;
+
+           
+            public BigInteger aa(ListNode a) {
+                BigInteger sum = BigInteger.ZERO;
+                BigInteger place = BigInteger.ONE;
+
+                while (a != null) {
+                    BigInteger digit = BigInteger.valueOf(a.val);
+                    sum = sum.add(digit.multiply(place));
+                    place = place.multiply(BigInteger.TEN);
+                    a = a.next;
+                }
+                return sum;
+            }
+
+            
+            public ListNode ba(BigInteger s) {
+                if (s.equals(BigInteger.ZERO)) return new ListNode(0);
+
+                ListNode head = null;
+                ListNode tail = null;
+
+                while (s.compareTo(BigInteger.ZERO) > 0) {
+                    int digit = s.mod(BigInteger.TEN).intValue();
+                    s = s.divide(BigInteger.TEN);
+                    ListNode y = new ListNode(digit);
+
+                    if (head == null) {
+                        head = y;
+                        tail = y;
+                    } else {
+                        tail.next = y;
+                        tail = y;
+                    }
+                }
+
+                return head;
+            }
+        }
+
+        Nelo qq = new Nelo();
+        BigInteger val1 = qq.aa(l1);
+        BigInteger val2 = qq.aa(l2);
+        return qq.ba(val1.add(val2));
+    }
+}
